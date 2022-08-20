@@ -14,7 +14,7 @@
   "files": [
     "src"
   ],
-  "scripts": {
+  "scripts": { 
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "typecheck": "tsc --noEmit",
