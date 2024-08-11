@@ -454,7 +454,7 @@ export default class {
       maxRedirections: 0,
       localAddress: "16.16.97.85"
     };
-    const agent = ytdl.createAgent([
+    const cookies = [
       {
           "domain": ".youtube.com",
           "expirationDate": 1738951927.841419,
@@ -464,7 +464,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "P6TOLbxQU6WlPd-l/ApDbWx2mdVn4VfxX5",
           "id": 1
@@ -478,7 +477,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "g.a000mwhslec-57tTABpzNCDjbKLO_vI4nyDfxf85hbAYgcRtFNOsH0V73feeBD3eYP6E6UDwngACgYKAY0SARISFQHGX2MiUVCzOZPtCibRBf5nu21roRoVAUF8yKrFAMHurZodKp20P9C7Cz6y0076",
           "id": 2
@@ -492,7 +490,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "AKEyXzXNNcau7h97C27SrGrRYx4TJnR_qRh1WYJFNtOWLG7LBTiN7O0rfznIFy6mg2Rmwculmw",
           "id": 3
@@ -506,7 +503,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "sidts-CjEBUFGoh0MSUX8C7-Iib_IEBK0pD4RbYSnkadkUbOEiey4yDBJy-gudYP3-Cl_wRZC4EAA",
           "id": 4
@@ -520,7 +516,6 @@ export default class {
           "path": "/",
           "sameSite": "no_restriction",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "P6TOLbxQU6WlPd-l/ApDbWx2mdVn4VfxX5",
           "id": 5
@@ -534,7 +529,6 @@ export default class {
           "path": "/",
           "sameSite": "no_restriction",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "g.a000mwhslec-57tTABpzNCDjbKLO_vI4nyDfxf85hbAYgcRtFNOsai1kPOn8FLTyPnUihGQIEQACgYKAcISARISFQHGX2Mi98aUb_v5XwIADJyXeA7JHRoVAUF8yKoUyJIpawfmCDIPLjyuZIj60076",
           "id": 6
@@ -548,7 +542,6 @@ export default class {
           "path": "/",
           "sameSite": "no_restriction",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "AKEyXzVOdZRApY94qJ0qYulHTEJwLFuocasLdPoUJRbknZti0n5EZXmQH5T1I3hnpxNSP5zliQ",
           "id": 7
@@ -562,7 +555,6 @@ export default class {
           "path": "/",
           "sameSite": "no_restriction",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "sidts-CjEBUFGoh0MSUX8C7-Iib_IEBK0pD4RbYSnkadkUbOEiey4yDBJy-gudYP3-Cl_wRZC4EAA",
           "id": 8
@@ -576,7 +568,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": false,
-          "session": false,
           "storeId": "1",
           "value": "exFwkVYnpQP2UwWj/AA82ZTLz_M7OgHUN_",
           "id": 9
@@ -590,7 +581,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "1",
           "id": 10
@@ -604,7 +594,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": false,
-          "session": false,
           "storeId": "1",
           "value": "A1G8ReRkHpTQdB73N",
           "id": 11
@@ -618,7 +607,6 @@ export default class {
           "path": "/",
           "sameSite": "no_restriction",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "AFmmF2swRQIgIbHFlWI8s5lDQyjPECNlGObhBpVfRaiZyoBKJau6CxcCIQDOWF7c5ROkcJK6OkK08CAe1TfNSNlidgt2_ylNcpq45w:QUQ3MjNmd1Fuc3pSVGwwQjZ0SWthNjdKOVFMUXI3STJkN3ctTkdLMjExbUkwUXN6Z3ZZd2Y1aDlDbVpNWThkSTVzQ0RfNUw5RmNrazhxdUhsQVFZZXdqd1VpQ0g2Wl9tZWZLem5CSXpHMm5YRmYySXExcFh2SXdfSWJXbTJ2RXdXMENWNlJ4a1F3NWcyUU5RVUkxYnRkalExbnFPMHIxaWNB",
           "id": 12
@@ -632,7 +620,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "516=KI_kjXGJS6pM5PB3EoIxRmeHlCOTMtRA9J1QKa4UVGtoskwbFG0WSiqe-VbZuT9XfRQGWw-WMkcH8YnGCYGHpQih1dLzSs_W6SLhAv3-iFCEZ8kDEPjiwlc52_L3CNMfCtnga6NUrqkpziYUiUJIGEJ6FuPdlhkLIQHROSgDcJCfr-He3l4VLsyolw",
           "id": 13
@@ -646,7 +633,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "f6=40000000&tz=Europe.Stockholm",
           "id": 14
@@ -660,7 +646,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "P6TOLbxQU6WlPd-l/ApDbWx2mdVn4VfxX5",
           "id": 15
@@ -674,7 +659,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": false,
-          "session": false,
           "storeId": "1",
           "value": "g.a000mwhslec-57tTABpzNCDjbKLO_vI4nyDfxf85hbAYgcRtFNOs_ynRNCBFMwLpdvtQB6nfCAACgYKASsSARISFQHGX2MiqNuvrzdIc0t4xhg3VVaVARoVAUF8yKpgEAuqS-SK-u68NqeQshD30076",
           "id": 16
@@ -688,7 +672,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": false,
-          "session": false,
           "storeId": "1",
           "value": "AKEyXzWbCxBL5xLmy0MMfkazDimKhRB58CqE45RxBuOibCnhOimOdX6JhANOzfJyz1tTJ-o5",
           "id": 17
@@ -701,7 +684,6 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": true,
           "storeId": "1",
           "value": "CAISNQgDEitib3FfaWRlbnRpdHlmcm9udGVuZHVpc2VydmVyXzIwMjMwODI5LjA3X3AxGgJlbiADGgYIgJnPpwY",
           "id": 18
@@ -715,12 +697,12 @@ export default class {
           "path": "/",
           "sameSite": "unspecified",
           "secure": true,
-          "session": false,
           "storeId": "1",
           "value": "A2Vv-AkMMx40k6AYR",
           "id": 19
       }
-      ],
+    ];
+    const agent = ytdl.createAgent(cookies,
       agentOptions);
 
     if (!ffmpegInput) {
