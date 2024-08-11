@@ -8,8 +8,15 @@ import {SlashCommandBuilder} from '@discordjs/builders';
 @injectable()
 export default class implements Command {
   public readonly slashCommand = new SlashCommandBuilder()
-    .setName('shuffle')
-    .setDescription('shuffle the current queue');
+    .setName('volume')
+    .setDescription('set current player volume level')
+    .addIntegerOption(option =>
+      option.setName('level')
+        .setDescription('volume percentage (0 is muted, 100 is max & default)')
+        .setMinValue(0)
+        .setMaxValue(100)
+        .setRequired(true),
+    );
 
   public requiresVC = true;
 
@@ -22,12 +29,14 @@ export default class implements Command {
   public async execute(interaction: ChatInputCommandInteraction): Promise<void> {
     const player = this.playerManager.get(interaction.guild!.id);
 
-    if (player.isQueueEmpty()) {
-      throw new Error('not enough songs to shuffle');
+    const currentSong = player.getCurrent();
+
+    if (!currentSong) {
+      throw new Error('nothing is playing');
     }
 
-    player.shuffle();
-
-    await interaction.reply('shuffled');
+    const level = interaction.options.getInteger('level') ?? 100;
+    player.setVolume(level);
+    await interaction.reply(`Set volume to ${level}%`);
   }
 }

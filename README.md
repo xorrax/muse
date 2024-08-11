@@ -19,6 +19,7 @@ Muse is a **highly-opinionated midwestern self-hosted** Discord music bot **that
 - ↔️ Autoconverts playlists / artists / albums / songs from Spotify
 - ↗️ Users can add custom shortcuts (aliases)
 - 1️⃣ Muse instance supports multiple guilds
+- 🔊 Normalizes volume across tracks
 - ✍️ Written in TypeScript, easily extendable
 - ❤️ Loyal Packers fan
 
@@ -29,6 +30,9 @@ Muse is written in TypeScript. You can either run Muse with Docker (recommended)
 - `DISCORD_TOKEN` can be acquired [here](https://discordapp.com/developers/applications) by creating a 'New Application', then going to 'Bot'.
 - `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` can be acquired [here](https://developer.spotify.com/dashboard/applications) with 'Create a Client ID'.
 - `YOUTUBE_API_KEY` can be acquired by [creating a new project](https://console.developers.google.com) in Google's Developer Console, enabling the YouTube API, and creating an API key under credentials.
+
+> [!WARNING]
+> Even if you don't plan on using Spotify, you must still provide the client ID and secret; otherwise Muse will not function.
 
 Muse will log a URL when run. Open this URL in a browser to invite Muse to your server. Muse will DM the server owner after it's added with setup instructions.
 
@@ -78,7 +82,7 @@ services:
 ### Node.js
 
 **Prerequisites**:
-* Node.js (16.x is recommended because it's the current LTS version)
+* Node.js (18.17.0 or later is required and latest 18.x.x LTS is recommended)
 * ffmpeg (4.1 or later)
 
 1. `git clone https://github.com/codetheweb/muse.git && cd muse`
@@ -94,6 +98,11 @@ services:
 ### Cache
 
 By default, Muse limits the total cache size to around 2 GB. If you want to change this, set the environment variable `CACHE_LIMIT`. For example, `CACHE_LIMIT=512MB` or `CACHE_LIMIT=10GB`.
+
+### SponsorBlock
+
+Muse can skip non-music segments at the beginning or end of a Youtube music video (Using [SponsorBlock](https://sponsor.ajay.app/)). It is disabled by default. If you want to enable it, set the environment variable `ENABLE_SPONSORBLOCK=true` or uncomment it in your .env.
+Being a community project, the server may be down or overloaded. When it happen, Muse will skip requests to SponsorBlock for a few minutes. You can change the skip duration by setting the value of `SPONSORBLOCK_TIMEOUT`.
 
 ### Custom Bot Status
 

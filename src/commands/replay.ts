@@ -8,8 +8,8 @@ import {SlashCommandBuilder} from '@discordjs/builders';
 @injectable()
 export default class implements Command {
   public readonly slashCommand = new SlashCommandBuilder()
-    .setName('shuffle')
-    .setDescription('shuffle the current queue');
+    .setName('replay')
+    .setDescription('replay the current song');
 
   public requiresVC = true;
 
@@ -22,12 +22,21 @@ export default class implements Command {
   public async execute(interaction: ChatInputCommandInteraction): Promise<void> {
     const player = this.playerManager.get(interaction.guild!.id);
 
-    if (player.isQueueEmpty()) {
-      throw new Error('not enough songs to shuffle');
+    const currentSong = player.getCurrent();
+
+    if (!currentSong) {
+      throw new Error('nothing is playing');
     }
 
-    player.shuffle();
+    if (currentSong.isLive) {
+      throw new Error('can\'t replay a livestream');
+    }
 
-    await interaction.reply('shuffled');
+    await Promise.all([
+      player.seek(0),
+      interaction.deferReply(),
+    ]);
+
+    await interaction.editReply('👍 replayed the current song');
   }
 }

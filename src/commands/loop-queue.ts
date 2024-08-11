@@ -4,12 +4,13 @@ import {inject, injectable} from 'inversify';
 import PlayerManager from '../managers/player.js';
 import Command from './index.js';
 import {SlashCommandBuilder} from '@discordjs/builders';
+import {STATUS} from '../services/player.js';
 
 @injectable()
 export default class implements Command {
   public readonly slashCommand = new SlashCommandBuilder()
-    .setName('shuffle')
-    .setDescription('shuffle the current queue');
+    .setName('loop-queue')
+    .setDescription('toggle looping the entire queue');
 
   public requiresVC = true;
 
@@ -22,12 +23,20 @@ export default class implements Command {
   public async execute(interaction: ChatInputCommandInteraction): Promise<void> {
     const player = this.playerManager.get(interaction.guild!.id);
 
-    if (player.isQueueEmpty()) {
-      throw new Error('not enough songs to shuffle');
+    if (player.status === STATUS.IDLE) {
+      throw new Error('no songs to loop!');
     }
 
-    player.shuffle();
+    if (player.queueSize() < 2) {
+      throw new Error('not enough songs to loop a queue!');
+    }
 
-    await interaction.reply('shuffled');
+    if (player.loopCurrentSong) {
+      player.loopCurrentSong = false;
+    }
+
+    player.loopCurrentQueue = !player.loopCurrentQueue;
+
+    await interaction.reply((player.loopCurrentQueue ? 'looped queue :)' : 'stopped looping queue :('));
   }
 }

@@ -1,6 +1,6 @@
 import {Client, Guild} from 'discord.js';
 import container from '../inversify.config.js';
-import Command from '../commands';
+import Command from '../commands/index.js';
 import {TYPES} from '../types.js';
 import Config from '../services/config.js';
 import {prisma} from '../utils/db.js';
@@ -8,20 +8,20 @@ import {REST} from '@discordjs/rest';
 import {Setting} from '@prisma/client';
 import registerCommandsOnGuild from '../utils/register-commands-on-guild.js';
 
-export async function createGuildSettings(guild: Guild): Promise<Setting> {
+export async function createGuildSettings(guildId: string): Promise<Setting> {
   return prisma.setting.upsert({
     where: {
-      guildId: guild.id,
+      guildId,
     },
     create: {
-      guildId: guild.id,
+      guildId,
     },
     update: {},
   });
 }
 
 export default async (guild: Guild): Promise<void> => {
-  await createGuildSettings(guild);
+  await createGuildSettings(guild.id);
 
   const config = container.get<Config>(TYPES.Config);
 
